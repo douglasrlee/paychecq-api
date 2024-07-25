@@ -60,3 +60,9 @@ group :development do
 
   gem 'strong_migrations'
 end
+
+group :test do
+  gem 'simplecov'
+
+  gem 'simplecov-cobertura'
+end

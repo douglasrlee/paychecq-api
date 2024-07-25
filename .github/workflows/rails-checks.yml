@@ -44,3 +44,9 @@ jobs:
 
       - name: Run rspec
         run: bundle exec rspec
+
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        if: github.actor != 'dependabot[bot]'
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
