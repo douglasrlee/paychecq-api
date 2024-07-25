@@ -50,5 +50,5 @@ group :development do
 
   gem 'rubocop-rails', require: false
 
-  gem "strong_migrations"
+  gem 'strong_migrations'
 end
