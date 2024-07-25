@@ -78,4 +78,6 @@ Rails.application.configure do
     Bullet.skip_html_injection = true
     Bullet.skip_http_headers   = true
   end
+
+  config.factory_bot.definition_file_paths = ['spec/factories']
 end

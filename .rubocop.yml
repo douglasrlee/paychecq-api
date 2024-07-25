@@ -2,6 +2,7 @@ require:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
+  - rubocop-factory_bot
 
 AllCops:
   NewCops: enable
@@ -10,4 +11,7 @@ Style/Documentation:
   Enabled: false
 
 Metrics/BlockLength:
+  Enabled: false
+
+RSpec/NestedGroups:
   Enabled: false
