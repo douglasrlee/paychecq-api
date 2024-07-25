@@ -63,4 +63,14 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  config.after_initialize do
+    Bullet.enable              = true
+    Bullet.bullet_logger       = true
+    Bullet.console             = true
+    Bullet.rails_logger        = true
+    Bullet.skip_html_injection = true
+    Bullet.skip_http_headers   = true
+    Bullet.raise               = true # raise an error if n+1 query occurs
+  end
 end
