@@ -11,7 +11,7 @@ RSpec.describe Client do
   end
 
   describe 'callbacks' do
-    describe 'encrypt_secret' do
+    describe '.encrypt_secret' do
       context 'when secret is blank' do
         it 'does not call encrypt_secret on the AuthenticationService' do
           client.secret = nil

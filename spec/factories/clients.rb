@@ -2,7 +2,6 @@
 
 FactoryBot.define do
   factory :client do
-    id { SecureRandom.uuid }
     secret { 'a4a030c7-1940-4cb7-a58d-fdb838a10aa6' }
     name { Faker::Name.unique.name }
     public { false }
