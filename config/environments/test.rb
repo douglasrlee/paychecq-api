@@ -74,3 +74,5 @@ Rails.application.configure do
     Bullet.raise               = true # raise an error if n+1 query occurs
   end
 end
+
+ENV['PAYCHECQ_API_HOST'] = 'http://localhost:3000'
