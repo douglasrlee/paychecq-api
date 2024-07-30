@@ -26,6 +26,4 @@ class JwtService
     end
     # :nocov:
   end
-
-  private_class_method :key
 end
