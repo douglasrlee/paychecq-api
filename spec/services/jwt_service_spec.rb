@@ -6,7 +6,7 @@ RSpec.describe JwtService do
   describe '.encode' do
     it 'uses correct secret' do
       expect do
-        JWT.decode(described_class.encode({}), Rails.application.credentials.secret_key_base, true, algorithm: 'HS256')
+        JWT.decode(described_class.encode({}), described_class.key, true, algorithm: 'HS256')
       end.not_to raise_error
     end
 
@@ -15,7 +15,7 @@ RSpec.describe JwtService do
         jwt = described_class.encode({})
 
         decoded_jwt_body = JWT.decode(
-          jwt, Rails.application.credentials.secret_key_base, false, algorithm: 'HS256'
+          jwt, described_class.key, false, algorithm: 'HS256'
         ).first
 
         expect(decoded_jwt_body['jti']).not_to be_nil
@@ -28,7 +28,7 @@ RSpec.describe JwtService do
       jwt = described_class.encode({})
 
       decoded_jwt_headers = JWT.decode(
-        jwt, Rails.application.credentials.secret_key_base, false, algorithm: 'HS256'
+        jwt, described_class.key, false, algorithm: 'HS256'
       ).second
 
       expect(decoded_jwt_headers['alg']).to eq('HS256')
@@ -39,7 +39,7 @@ RSpec.describe JwtService do
       jwt = described_class.encode({ test: 'test' })
 
       decoded_jwt_body = JWT.decode(
-        jwt, Rails.application.credentials.secret_key_base, false, algorithm: 'HS256'
+        jwt, described_class.key, false, algorithm: 'HS256'
       ).first
 
       expect(decoded_jwt_body['test']).to eq('test')
