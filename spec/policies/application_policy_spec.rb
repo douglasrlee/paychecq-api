@@ -15,7 +15,7 @@ RSpec.describe ApplicationPolicy, type: :policy do
     end
   end
 
-  permissions :index?, :show?, :new?, :create?, :update?, :destroy? do
+  permissions :index?, :show?, :new?, :create?, :update?, :destroy?, :edit? do
     it 'does not grant access' do
       expect(described_class).not_to permit(nil, nil)
     end
