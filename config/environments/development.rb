@@ -81,3 +81,5 @@ Rails.application.configure do
 
   config.factory_bot.definition_file_paths = ['spec/factories']
 end
+
+ENV['PAYCHECQ_API_HOST'] = 'http://localhost:3000'
