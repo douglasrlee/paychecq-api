@@ -21,3 +21,6 @@ RSpec/ExampleLength:
   Enabled: false
 RSpec/MultipleExpectations:
   Enabled: false
+RSpec/RepeatedExample:
+  Exclude:
+    - 'spec/policies/*'

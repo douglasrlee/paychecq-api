@@ -4,6 +4,7 @@ class ApplicationController < ActionController::API
   include Pundit::Authorization
 
   rescue_from Pundit::NotAuthorizedError, with: :handle_not_authorized_error
+  rescue_from ActionController::ParameterMissing, with: :handle_parameter_missing
 
   def current_user
     fetch_client
@@ -25,5 +26,9 @@ class ApplicationController < ActionController::API
 
   def handle_not_authorized_error
     head :unauthorized
+  end
+
+  def handle_parameter_missing(exception)
+    render json: { errors: [exception] }, status: :bad_request
   end
 end
