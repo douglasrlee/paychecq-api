@@ -10,10 +10,22 @@ class JwtService
                                jti: SecureRandom.uuid,
                                iat: now,
                                nbf: now
-                             }), Rails.application.credentials.secret_key_base, 'HS256', { typ: 'JWT' })
+                             }), key, 'HS256', { typ: 'JWT' })
   end
 
   def self.decode(token)
-    JWT.decode(token, Rails.application.credentials.secret_key_base, true, algorithm: 'HS256')
+    JWT.decode(token, key, true, algorithm: 'HS256')
   end
+
+  def self.key
+    # :nocov:
+    if Rails.application.credentials.secret_key_base.nil?
+      'password' if ENV.fetch('CI')
+    else
+      Rails.application.credentials.secret_key_base
+    end
+    # :nocov:
+  end
+
+  private_class_method :key
 end
