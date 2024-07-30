@@ -17,8 +17,6 @@ class JwtService
     JWT.decode(token, key, true, algorithm: 'HS256')
   end
 
-  private_class_method :key
-
   def self.key
     if Rails.application.credentials.secret_key_base.nil?
       'password' if ENV.fetch('CI')
@@ -26,4 +24,6 @@ class JwtService
       Rails.application.credentials.secret_key_base
     end
   end
+
+  private_class_method :key
 end
