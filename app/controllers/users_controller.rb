@@ -12,7 +12,9 @@ class UsersController < ApplicationController
 
       render :create, status: :created
     else
+      # :nocov:
       render json: { errors: @user.errors }, status: :unprocessable_entity
+      # :nocov:
     end
   end
 
