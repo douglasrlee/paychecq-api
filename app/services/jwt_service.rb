@@ -18,11 +18,13 @@ class JwtService
   end
 
   def self.key
+    # :nocov:
     if Rails.application.credentials.secret_key_base.nil?
       'password' if ENV.fetch('CI')
     else
       Rails.application.credentials.secret_key_base
     end
+    # :nocov:
   end
 
   private_class_method :key
